@@ -1,0 +1,27 @@
+{
+  "test_name": "Profile Style Comparison - Outdoor vs Urban",
+  "description": "Compare performance between outdoor adventure style vs urban professional style",
+  "duration_days": 7,
+  "swipes_per_profile": 100,
+  "profiles": {
+    "profile_a": {
+      "config_file": "configs/profile_a.json",
+      "description": "Outdoor enthusiast personality"
+    },
+    "profile_b": {
+      "config_file": "configs/profile_b.json",
+      "description": "Urban professional personality"
+    }
+  },
+  "metrics": [
+    "match_rate",
+    "message_response_rate",
+    "conversation_duration",
+    "quality_of_matches"
+  ],
+  "schedule": {
+    "switch_interval_hours": 12,
+    "daily_swipe_limit": 50
+  }
+}
+

@@ -1,0 +1,25 @@
+{
+  "profile_name": "Profile B - Urban Professional",
+  "bio": "Tech professional | Foodie | Netflix enthusiast | Dog lover",
+  "photos": [
+    "photos/profile_b/photo1.jpg",
+    "photos/profile_b/photo2.jpg",
+    "photos/profile_b/photo3.jpg",
+    "photos/profile_b/photo4.jpg"
+  ],
+  "age": 28,
+  "gender": "male",
+  "interests": [
+    "Technology",
+    "Food",
+    "Movies",
+    "Dogs",
+    "Fitness"
+  ],
+  "settings": {
+    "distance_preference": 25,
+    "age_range_min": 24,
+    "age_range_max": 32
+  }
+}
+

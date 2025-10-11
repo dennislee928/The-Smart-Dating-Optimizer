@@ -1,0 +1,25 @@
+{
+  "profile_name": "Profile A - Outdoor Enthusiast",
+  "bio": "Adventure seeker | Love hiking and photography | Coffee addict",
+  "photos": [
+    "photos/profile_a/photo1.jpg",
+    "photos/profile_a/photo2.jpg",
+    "photos/profile_a/photo3.jpg",
+    "photos/profile_a/photo4.jpg"
+  ],
+  "age": 28,
+  "gender": "male",
+  "interests": [
+    "Hiking",
+    "Photography",
+    "Coffee",
+    "Travel",
+    "Music"
+  ],
+  "settings": {
+    "distance_preference": 25,
+    "age_range_min": 24,
+    "age_range_max": 32
+  }
+}
+
