@@ -22,4 +22,3 @@ type LoginResponse struct {
 type RegisterResponse struct {
 	User UserVO `json:"user"`
 }
-

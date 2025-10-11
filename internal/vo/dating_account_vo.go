@@ -19,4 +19,3 @@ type DatingAccountListResponse struct {
 	Accounts []DatingAccountVO `json:"accounts"`
 	Total    int64             `json:"total"`
 }
-

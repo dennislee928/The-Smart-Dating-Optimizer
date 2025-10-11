@@ -34,18 +34,18 @@ func (j *JSONB) Scan(value interface{}) error {
 
 // Profile 個人檔案模型
 type Profile struct {
-	ID               int64          `gorm:"primaryKey;autoIncrement"`
-	DatingAccountID  int64          `gorm:"not null;index:idx_profiles_account"`
-	ProfileName      string         `gorm:"type:varchar(100);not null"`
-	Bio              string         `gorm:"type:text"`
-	Photos           JSONB          `gorm:"type:jsonb"` // array of photo URLs
-	Age              int            `gorm:"type:integer"`
-	Gender           string         `gorm:"type:varchar(20)"`
-	Interests        JSONB          `gorm:"type:jsonb"` // array of interests
-	IsActive         bool           `gorm:"default:false;index:idx_profiles_active"`
-	CreatedAt        time.Time      `gorm:"type:timestamp with time zone;default:CURRENT_TIMESTAMP"`
-	UpdatedAt        time.Time      `gorm:"type:timestamp with time zone;default:CURRENT_TIMESTAMP"`
-	DeletedAt        gorm.DeletedAt `gorm:"type:timestamp with time zone;index"`
+	ID              int64          `gorm:"primaryKey;autoIncrement"`
+	DatingAccountID int64          `gorm:"not null;index:idx_profiles_account"`
+	ProfileName     string         `gorm:"type:varchar(100);not null"`
+	Bio             string         `gorm:"type:text"`
+	Photos          JSONB          `gorm:"type:jsonb"` // array of photo URLs
+	Age             int            `gorm:"type:integer"`
+	Gender          string         `gorm:"type:varchar(20)"`
+	Interests       JSONB          `gorm:"type:jsonb"` // array of interests
+	IsActive        bool           `gorm:"default:false;index:idx_profiles_active"`
+	CreatedAt       time.Time      `gorm:"type:timestamp with time zone;default:CURRENT_TIMESTAMP"`
+	UpdatedAt       time.Time      `gorm:"type:timestamp with time zone;default:CURRENT_TIMESTAMP"`
+	DeletedAt       gorm.DeletedAt `gorm:"type:timestamp with time zone;index"`
 
 	// Relations
 	DatingAccount      DatingAccount       `gorm:"foreignKey:DatingAccountID"`
@@ -58,4 +58,3 @@ type Profile struct {
 func (Profile) TableName() string {
 	return "profiles"
 }
-

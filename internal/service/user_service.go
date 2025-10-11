@@ -149,4 +149,3 @@ func (s *userService) UpdateUser(id int64, req *dto.UpdateUserRequest) (*vo.User
 func (s *userService) DeleteUser(id int64) error {
 	return s.userRepo.Delete(id)
 }
-

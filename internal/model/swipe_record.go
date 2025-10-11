@@ -14,7 +14,7 @@ type SwipeRecord struct {
 	TargetAge       int       `gorm:"type:integer"`
 	TargetBio       string    `gorm:"type:text"`
 	TargetPhotos    JSONB     `gorm:"type:jsonb"`
-	TargetDistance  int       `gorm:"type:integer"` // in km
+	TargetDistance  int       `gorm:"type:integer"`                                                // in km
 	SwipeDirection  string    `gorm:"type:varchar(10);not null;index:idx_swipe_records_direction"` // 'left', 'right', 'super'
 	IsMatch         bool      `gorm:"default:false"`
 	AIScore         *float64  `gorm:"type:decimal(5,2)"`
@@ -33,4 +33,3 @@ type SwipeRecord struct {
 func (SwipeRecord) TableName() string {
 	return "swipe_records"
 }
-

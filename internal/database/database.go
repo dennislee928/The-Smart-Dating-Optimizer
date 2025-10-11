@@ -65,4 +65,3 @@ func AutoMigrate() error {
 func GetDB() *gorm.DB {
 	return DB
 }
-

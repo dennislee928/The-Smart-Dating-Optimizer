@@ -18,4 +18,3 @@ type UpdateUserRequest struct {
 	Username string `json:"username" binding:"omitempty,min=3,max=100"`
 	Password string `json:"password" binding:"omitempty,min=8"`
 }
-

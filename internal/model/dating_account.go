@@ -20,18 +20,17 @@ type DatingAccount struct {
 	DeletedAt    gorm.DeletedAt `gorm:"type:timestamp with time zone;index"`
 
 	// Relations
-	User               User                 `gorm:"foreignKey:UserID"`
-	Profiles           []Profile            `gorm:"foreignKey:DatingAccountID"`
-	ABTests            []ABTest             `gorm:"foreignKey:DatingAccountID"`
-	SwipeRecords       []SwipeRecord        `gorm:"foreignKey:DatingAccountID"`
-	Matches            []Match              `gorm:"foreignKey:DatingAccountID"`
-	AIModels           []AIModel            `gorm:"foreignKey:DatingAccountID"`
-	AnalyticsSnapshots []AnalyticsSnapshot  `gorm:"foreignKey:DatingAccountID"`
-	AutomationLogs     []AutomationLog      `gorm:"foreignKey:DatingAccountID"`
+	User               User                `gorm:"foreignKey:UserID"`
+	Profiles           []Profile           `gorm:"foreignKey:DatingAccountID"`
+	ABTests            []ABTest            `gorm:"foreignKey:DatingAccountID"`
+	SwipeRecords       []SwipeRecord       `gorm:"foreignKey:DatingAccountID"`
+	Matches            []Match             `gorm:"foreignKey:DatingAccountID"`
+	AIModels           []AIModel           `gorm:"foreignKey:DatingAccountID"`
+	AnalyticsSnapshots []AnalyticsSnapshot `gorm:"foreignKey:DatingAccountID"`
+	AutomationLogs     []AutomationLog     `gorm:"foreignKey:DatingAccountID"`
 }
 
 // TableName 指定表名
 func (DatingAccount) TableName() string {
 	return "dating_accounts"
 }
-

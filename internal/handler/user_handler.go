@@ -194,4 +194,3 @@ func (h *UserHandler) UpdateUser(c *gin.Context) {
 		Data:    user,
 	})
 }
-

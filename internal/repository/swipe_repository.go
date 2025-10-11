@@ -142,4 +142,3 @@ func (r *swipeRepository) GetStats(accountID int64, profileID *int64) (*SwipeSta
 
 	return stats, nil
 }
-

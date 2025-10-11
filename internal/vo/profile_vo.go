@@ -35,4 +35,3 @@ type ProfileStatsVO struct {
 	MessageResponseRate float64 `json:"message_response_rate"`
 	AvgAIScore          float64 `json:"avg_ai_score"`
 }
-

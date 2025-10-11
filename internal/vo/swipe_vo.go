@@ -30,13 +30,12 @@ type SwipeHistoryResponse struct {
 
 // SwipeStatsVO 滑卡統計回應
 type SwipeStatsVO struct {
-	TotalSwipes    int     `json:"total_swipes"`
-	RightSwipes    int     `json:"right_swipes"`
-	LeftSwipes     int     `json:"left_swipes"`
-	SuperSwipes    int     `json:"super_swipes"`
-	MatchesCount   int     `json:"matches_count"`
-	MatchRate      float64 `json:"match_rate"`
-	AvgAIScore     float64 `json:"avg_ai_score"`
-	AvgTargetAge   float64 `json:"avg_target_age"`
+	TotalSwipes  int     `json:"total_swipes"`
+	RightSwipes  int     `json:"right_swipes"`
+	LeftSwipes   int     `json:"left_swipes"`
+	SuperSwipes  int     `json:"super_swipes"`
+	MatchesCount int     `json:"matches_count"`
+	MatchRate    float64 `json:"match_rate"`
+	AvgAIScore   float64 `json:"avg_ai_score"`
+	AvgTargetAge float64 `json:"avg_target_age"`
 }
-

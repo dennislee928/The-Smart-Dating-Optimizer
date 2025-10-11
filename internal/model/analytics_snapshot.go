@@ -31,4 +31,3 @@ type AnalyticsSnapshot struct {
 func (AnalyticsSnapshot) TableName() string {
 	return "analytics_snapshots"
 }
-

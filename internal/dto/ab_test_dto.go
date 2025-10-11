@@ -22,4 +22,3 @@ type UpdateABTestRequest struct {
 type GetABTestResultRequest struct {
 	ABTestID int64 `json:"ab_test_id" binding:"required"`
 }
-

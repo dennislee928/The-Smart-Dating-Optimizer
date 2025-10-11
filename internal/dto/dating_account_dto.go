@@ -17,4 +17,3 @@ type UpdateDatingAccountRequest struct {
 type SyncDatingAccountRequest struct {
 	DatingAccountID int64 `json:"dating_account_id" binding:"required"`
 }
-
