@@ -19,7 +19,7 @@
 - **CI/CD:** GitHub Actions (用於執行程式碼風格檢查與測試)
 
 ## 專案結構 (Project Structure)
-
+```plaintext
 /smart-dating-optimizer
 ├── automations/              # 主要的自動化腳本
 │   ├── tinder_bot.py
@@ -34,3 +34,4 @@
 ├── dashboard/                # (可選) 前端儀表板專案
 ├── main.py                   # 專案主進入點
 └── requirements.txt
+```
