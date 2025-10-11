@@ -123,15 +123,23 @@ func (r *swipeRepository) GetStats(accountID int64, profileID *int64) (*SwipeSta
 	}
 
 	// 總滑卡數
-	query.Count(&stats.TotalSwipes)
+	var totalCount int64
+	query.Count(&totalCount)
+	stats.TotalSwipes = int(totalCount)
 
 	// 按方向統計
-	query.Where("swipe_direction = ?", "right").Count(&stats.RightSwipes)
-	query.Where("swipe_direction = ?", "left").Count(&stats.LeftSwipes)
-	query.Where("swipe_direction = ?", "super").Count(&stats.SuperSwipes)
+	var rightCount, leftCount, superCount int64
+	r.db.Model(&model.SwipeRecord{}).Where("dating_account_id = ? AND swipe_direction = ?", accountID, "right").Count(&rightCount)
+	r.db.Model(&model.SwipeRecord{}).Where("dating_account_id = ? AND swipe_direction = ?", accountID, "left").Count(&leftCount)
+	r.db.Model(&model.SwipeRecord{}).Where("dating_account_id = ? AND swipe_direction = ?", accountID, "super").Count(&superCount)
+	stats.RightSwipes = int(rightCount)
+	stats.LeftSwipes = int(leftCount)
+	stats.SuperSwipes = int(superCount)
 
 	// 配對數
-	query.Where("is_match = ?", true).Count(&stats.MatchesCount)
+	var matchCount int64
+	r.db.Model(&model.SwipeRecord{}).Where("dating_account_id = ? AND is_match = ?", accountID, true).Count(&matchCount)
+	stats.MatchesCount = int(matchCount)
 
 	// 平均 AI 分數
 	var avgScore *float64

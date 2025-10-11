@@ -1,5 +1,10 @@
 # 智慧社交改善器 (The Smart Dating Optimizer)
 
+[![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/yourusername/The-Smart-Dating-Optimizer)
+[![Go Version](https://img.shields.io/badge/go-1.21+-00ADD8)](https://golang.org)
+[![Python Version](https://img.shields.io/badge/python-3.11+-blue)](https://python.org)
+[![License](https://img.shields.io/badge/license-MIT-green)](./LICENSE)
+
 一個旨在透過數據分析與智慧自動化來提升社交軟體（Tinder, 心交等）配對與互動表現的工具。本專案整合了個人檔案 A/B 測試、配對對象分析以及可自訂策略的智慧滑卡功能。
 
 ## 核心功能 (Core Features)
