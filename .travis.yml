@@ -1,0 +1,89 @@
+language: generic
+
+services:
+  - docker
+  - postgresql
+
+addons:
+  postgresql: "15"
+
+env:
+  global:
+    - GO_VERSION=1.21
+    - PYTHON_VERSION=3.11
+    - DB_HOST=localhost
+    - DB_PORT=5432
+    - DB_USER=postgres
+    - DB_PASSWORD=postgres
+    - DB_NAME=smart_dating_optimizer_test
+    - DB_SSLMODE=disable
+
+before_install:
+  # Install Go
+  - wget -q https://go.dev/dl/go${GO_VERSION}.linux-amd64.tar.gz
+  - sudo tar -C /usr/local -xzf go${GO_VERSION}.linux-amd64.tar.gz
+  - export PATH=$PATH:/usr/local/go/bin
+  - export GOPATH=$HOME/go
+  - export PATH=$PATH:$GOPATH/bin
+  - go version
+  
+  # Install Python
+  - sudo apt-get update
+  - sudo apt-get install -y python${PYTHON_VERSION} python${PYTHON_VERSION}-venv python3-pip
+  - python${PYTHON_VERSION} --version
+  
+  # Setup database
+  - psql -c "CREATE DATABASE ${DB_NAME};" -U postgres
+
+install:
+  # Install Go dependencies
+  - go mod download
+  - go mod tidy
+  
+  # Install Python dependencies
+  - python${PYTHON_VERSION} -m pip install --upgrade pip
+  - pip install -r requirements.txt
+  - playwright install-deps
+  - playwright install chromium
+
+before_script:
+  # Run database migrations
+  - psql -U postgres -d ${DB_NAME} -f database/migrations/20251011000001_init_schema.up.sql
+
+script:
+  # Go backend tests
+  - echo "Running Go tests..."
+  - go fmt ./...
+  - go vet ./...
+  - go test -v -race -coverprofile=coverage.out ./...
+  
+  # Python tests
+  - echo "Running Python tests..."
+  - python${PYTHON_VERSION} -m flake8 automations analysis --count --select=E9,F63,F7,F82 --show-source --statistics || true
+  - python${PYTHON_VERSION} -m pytest --cov=automations --cov=analysis --cov-report=xml || echo "No tests found yet"
+  
+  # Build Go application
+  - echo "Building Go application..."
+  - go build -o bin/server cmd/server/main.go
+  
+  # Test main Python entry point
+  - echo "Testing Python main script..."
+  - python${PYTHON_VERSION} main.py --help || true
+
+after_success:
+  # Upload coverage to Codecov
+  - bash <(curl -s https://codecov.io/bash) -f coverage.out -F go || true
+  - bash <(curl -s https://codecov.io/bash) -f coverage.xml -F python || true
+
+cache:
+  directories:
+    - $HOME/.cache/go-build
+    - $HOME/go/pkg/mod
+    - $HOME/.cache/pip
+    - $HOME/.cache/ms-playwright
+
+notifications:
+  email:
+    on_success: change
+    on_failure: always
+

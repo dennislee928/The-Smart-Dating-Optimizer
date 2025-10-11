@@ -58,7 +58,7 @@ func main() {
 
 	// Repositories
 	userRepo := repository.NewUserRepository(db)
-	swipeRepo := repository.NewSwipeRepository(db)
+	// swipeRepo := repository.NewSwipeRepository(db) // TODO: 整合滑卡相關 API 時使用
 
 	// Services
 	userService := service.NewUserService(userRepo)
@@ -94,7 +94,7 @@ func main() {
 	// 健康檢查
 	router.GET("/health", func(c *gin.Context) {
 		c.JSON(200, gin.H{
-			"status": "ok",
+			"status":  "ok",
 			"message": "Smart Dating Optimizer API is running",
 		})
 	})
@@ -106,4 +106,3 @@ func main() {
 		log.Fatalf("伺服器啟動失敗: %v", err)
 	}
 }
-
